@@ -1,0 +1,50 @@
+POST http://localhost:5000/api/ibu/
+content-type: application/json
+
+{
+    "nama": "Surni",
+    "kondisi": "sehat",
+    "waktu_masuk": "Rabu 1 Maret 2023",
+    "umur": "28" 
+}
+
+###
+GET http://localhost:5000/api/ibu/
+
+###
+PUT http://localhost:5000/api/ibu/640028e8e3eb9ae1692c69a8
+content-type: application/json
+
+{
+    "nama": "Surni"
+}
+
+###
+DELETE http://localhost:5000/api/ibu/640028e8e3eb9ae1692c69a8
+
+###
+POST http://localhost:5000/api/bayi/
+content-type: application/json
+
+{
+    "nama": "Jon",
+    "kondisi": "sehat",
+    "tanggal_kelahiran": "Rabu 1 Maret 2023",
+    "metode": "Normal",
+    "umur_kehamilan": "9",
+    "ibu": "6400342734abf8e805d22802"
+}
+
+###
+GET http://localhost:5000/api/bayi/
+
+###
+PUT http://localhost:5000/api/bayi/6400370cd0da1ca8c95e40d4
+content-type: application/json
+
+{
+    "kondisi": "cesar"
+}
+
+###
+DELETE http://localhost:5000/api/bayi/6400382d9092cf382d9fce93
