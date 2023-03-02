@@ -84,8 +84,22 @@ export const bayiRows = [
   },
 ];
 
-export const motherColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+export const ibuColumns = [
+  {
+    field: "id",
+    headerName: "ID",
+    width: 100,
+    renderCell: (params) => {
+      return (
+        <div
+          id={`${params.row._id}`}
+          style={{ overflowX: "auto", paddingBottom: "4px" }}
+        >
+          {params.row._id}
+        </div>
+      );
+    },
+  },
   {
     field: "nama",
     headerName: "Nama Ibu",

@@ -37,21 +37,25 @@ export const formIbu = [
   {
     id: 1,
     label: "Nama",
+    name: "nama",
     type: "text",
   },
   {
     id: 2,
     label: "Kondisi Ibu",
+    name: "kondisi",
     type: "text",
   },
   {
     id: 3,
     label: "Umur",
-    type: "text",
+    name: "umur",
+    type: "number",
   },
   {
     id: 4,
     label: "Waktu Masuk Rumah Sakit",
     type: "datetime-local",
+    name: "waktu",
   },
 ];

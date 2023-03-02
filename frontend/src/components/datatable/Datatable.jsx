@@ -2,9 +2,11 @@ import "./datatable.scss";
 import { DataGrid } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { getDataIbuService } from "../../api/services";
+import { useEffect } from "react";
 
 const Datatable = ({ tableColumns, tableRows }) => {
-  const [data, setData] = useState(tableRows);
+  const [data, setData] = useState([]);
 
   const handleDelete = (id) => {
     setData(data.filter((item) => item.id !== id));
@@ -18,7 +20,7 @@ const Datatable = ({ tableColumns, tableRows }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-            <Link to="test" style={{ textDecoration: "none" }}>
+            <Link to={params.row._id} style={{ textDecoration: "none" }}>
               <div className="viewButton">View</div>
             </Link>
             <div
@@ -32,6 +34,19 @@ const Datatable = ({ tableColumns, tableRows }) => {
       },
     },
   ];
+
+  const getDataIbu = async () => {
+    try {
+      const { data } = await getDataIbuService();
+      setData(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (tableRows === "ibu") getDataIbu();
+  }, [tableRows]);
   return (
     <div className="datatable">
       <div className="datatableTitle">
@@ -42,11 +57,12 @@ const Datatable = ({ tableColumns, tableRows }) => {
       </div>
       <DataGrid
         className="datagrid"
-        rows={tableRows}
+        rows={data}
         columns={tableColumns.concat(actionColumn)}
         pageSize={9}
         rowsPerPageOptions={[9]}
         checkboxSelection
+        getRowId={(row) => row._id}
       />
     </div>
   );

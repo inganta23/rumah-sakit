@@ -4,11 +4,11 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { formBayi, formIbu, productInputs, userInputs } from "./formSource";
+import { formBayi, formIbu } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
-import { bayiColumns, bayiRows, motherColumns } from "./datatablesource";
+import { bayiColumns, bayiRows, ibuColumns } from "./datatablesource";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -23,9 +23,7 @@ function App() {
             <Route path="bayi">
               <Route
                 index
-                element={
-                  <List tableColumns={bayiColumns} tableRows={bayiRows} />
-                }
+                element={<List tableColumns={bayiColumns} tableRows={"bayi"} />}
               />
               <Route path=":userId" element={<Single />} />
               <Route
@@ -36,9 +34,9 @@ function App() {
             <Route path="ibu">
               <Route
                 index
-                element={<List tableColumns={motherColumns} tableRows={""} />}
+                element={<List tableColumns={ibuColumns} tableRows={"ibu"} />}
               />
-              <Route path=":productId" element={<Single />} />
+              <Route path=":ibuId" element={<Single data={"ibu"} />} />
               <Route
                 path="new"
                 element={<New inputs={formIbu} title="Tambah Data Ibu" />}
