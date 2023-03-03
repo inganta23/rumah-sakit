@@ -7,7 +7,6 @@ import {
   deleteDataIbuService,
   getDataBayiService,
   getDataIbuService,
-  getFilteredDataIbuService,
 } from "../../api/services";
 import { useEffect } from "react";
 import FilterIbu from "./FilterIbu";
