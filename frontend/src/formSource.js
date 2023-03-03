@@ -3,33 +3,42 @@ export const formBayi = [
     id: 1,
     label: "Nama",
     type: "text",
-    placeholder: "john_doe",
+    name: "nama",
   },
   {
     id: 2,
     label: "Kondisi",
     type: "text",
-    placeholder: "John Doe",
+    name: "kondisi",
   },
   {
     id: 3,
     label: "Tanggal Kelahiran",
     type: "datetime-local",
+    name: "waktu",
   },
   {
     id: 4,
     label: "Metode",
     type: "text",
+    name: "metode",
   },
   {
     id: 5,
-    label: "Umur Kehamilan",
+    label: "Umur Kehamilan (bulan)",
     type: "text",
+    name: "umur",
   },
   {
     id: 6,
     label: "Nama Ibu",
     type: "text",
+  },
+  {
+    id: 7,
+    label: "Gender",
+    type: "text",
+    name: "gender",
   },
 ];
 
@@ -57,5 +66,11 @@ export const formIbu = [
     label: "Waktu Masuk Rumah Sakit",
     type: "datetime-local",
     name: "waktu",
+  },
+  {
+    id: 5,
+    label: "Nomor Telepon",
+    type: "number",
+    name: "telepon",
   },
 ];

@@ -12,6 +12,9 @@ content-type: application/json
 GET http://localhost:5000/api/ibu
 
 ###
+GET http://localhost:5000/api/ibu/640033ac969dc14e059ca6ee
+
+###
 PUT http://localhost:5000/api/ibu/640028e8e3eb9ae1692c69a8
 content-type: application/json
 

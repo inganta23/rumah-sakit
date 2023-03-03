@@ -6,6 +6,7 @@ const ibuSchema = new mongoose.Schema(
     kondisi: { type: String, required: true },
     waktu_masuk: { type: String, required: true },
     umur: { type: String, required: true },
+    telepon: { type: String },
   },
   {
     timestamps: true,

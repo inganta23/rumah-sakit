@@ -1,5 +1,4 @@
 import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
@@ -19,27 +18,34 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
             <Route path="bayi">
               <Route
                 index
-                element={<List tableColumns={bayiColumns} tableRows={"bayi"} />}
+                element={<List tableColumns={bayiColumns} option="bayi" />}
               />
-              <Route path=":userId" element={<Single />} />
+              <Route path=":bayiId" element={<Single path={"bayi"} />} />
               <Route
                 path="new"
-                element={<New inputs={formBayi} title="Tambah Data Bayi" />}
+                element={
+                  <New
+                    inputs={formBayi}
+                    title="Tambah Data Bayi"
+                    option="bayi"
+                  />
+                }
               />
             </Route>
             <Route path="ibu">
               <Route
                 index
-                element={<List tableColumns={ibuColumns} tableRows={"ibu"} />}
+                element={<List tableColumns={ibuColumns} option="ibu" />}
               />
-              <Route path=":ibuId" element={<Single data={"ibu"} />} />
+              <Route path=":ibuId" element={<Single path="ibu" />} />
               <Route
                 path="new"
-                element={<New inputs={formIbu} title="Tambah Data Ibu" />}
+                element={
+                  <New inputs={formIbu} title="Tambah Data Ibu" option="ibu" />
+                }
               />
             </Route>
           </Route>

@@ -8,6 +8,7 @@ const bayiSchema = new mongoose.Schema(
     metode: { type: String, required: true },
     umur_kehamilan: { type: String, required: true },
     ibu: { type: mongoose.Schema.Types.ObjectId, ref: "Ibu" },
+    gender: { type: String, required: true },
   },
   {
     timestamps: true,

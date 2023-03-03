@@ -17,7 +17,29 @@ export async function createDataBayiHandler(req, res) {
 
 export async function getAllDataBayiHandler(req, res) {
   try {
-    const dataBayi = await getDataBayi({}, "ibu");
+    let dataBayi = "";
+    const query = req.query;
+    if (query.from && query.to) {
+      dataBayi = await getDataBayi(
+        {
+          tanggal_kelahiran: {
+            $gt: query.from,
+            $lt: query.to,
+          },
+        },
+        "ibu"
+      );
+    } else dataBayi = await getDataBayi({}, "ibu");
+    return res.send(dataBayi);
+  } catch (error) {
+    return res.status(400).send(error.message);
+  }
+}
+
+export async function getOneDataBayiHandler(req, res) {
+  try {
+    const bayiId = req.params.bayiId;
+    const dataBayi = await getDataBayi({ _id: bayiId }, "ibu");
     return res.send(dataBayi);
   } catch (error) {
     return res.status(400).send(error.message);

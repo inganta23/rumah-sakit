@@ -1,9 +1,28 @@
 export const bayiColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  {
+    field: "id",
+    headerName: "ID",
+    width: 130,
+    renderCell: (params) => {
+      return (
+        <div
+          id={`${params.row._id}`}
+          style={{ overflowX: "auto", paddingBottom: "4px" }}
+        >
+          {params.row._id}
+        </div>
+      );
+    },
+  },
   {
     field: "nama",
     headerName: "Nama Bayi",
     width: 200,
+  },
+  {
+    field: "gender",
+    headerName: "Gender",
+    width: 100,
   },
   {
     field: "kondisi",
@@ -15,6 +34,11 @@ export const bayiColumns = [
     field: "tanggal_kelahiran",
     headerName: "Tanggal Lahir",
     width: 150,
+    renderCell: (params) => {
+      return (
+        <div>{new Date(params.row.tanggal_kelahiran).toLocaleString()}</div>
+      );
+    },
   },
   {
     field: "metode",
@@ -30,57 +54,17 @@ export const bayiColumns = [
     field: "nama_ibu",
     headerName: "Nama Ibu",
     width: 200,
+    renderCell: (params) => {
+      return <div>{params.row.ibu?.nama}</div>;
+    },
   },
   {
     field: "umur_ibu",
     headerName: "Umur Ibu",
     width: 80,
-  },
-  // {
-  //   field: "status",
-  //   headerName: "Status",
-  //   width: 160,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
-  // },
-];
-
-//temporary data
-export const bayiRows = [
-  {
-    id: 1,
-    nama: "Snow",
-    kondisi: "sehat",
-    tanggal_kelahiran: "23 Mei 2000",
-    metode: "normal",
-    umur_kehamilan: "9 bulan",
-    nama_ibu: "Surni",
-    umur_ibu: "28 tahun",
-  },
-  {
-    id: 2,
-    nama: "Snow",
-    kondisi: "sehat",
-    tanggal_kelahiran: "23 Mei 2000",
-    metode: "normal",
-    umur_kehamilan: "9 bulan",
-    nama_ibu: "Surni",
-    umur_ibu: "28 tahun",
-  },
-  {
-    id: 3,
-    nama: "Snow",
-    kondisi: "sehat",
-    tanggal_kelahiran: "23 Mei 2000",
-    metode: "normal",
-    umur_kehamilan: "9 bulan",
-    nama_ibu: "Surni",
-    umur_ibu: "28 tahun",
+    renderCell: (params) => {
+      return <div>{params.row.ibu?.umur}</div>;
+    },
   },
 ];
 
@@ -88,7 +72,7 @@ export const ibuColumns = [
   {
     field: "id",
     headerName: "ID",
-    width: 100,
+    width: 80,
     renderCell: (params) => {
       return (
         <div
@@ -117,19 +101,15 @@ export const ibuColumns = [
   },
   {
     field: "waktu_masuk",
-    headerName: "Waktu Masuk Rumah Sakit",
-    width: 200,
+    headerName: "Waktu Masuk",
+    width: 150,
+    renderCell: (params) => {
+      return <div>{new Date(params.row.waktu_masuk).toLocaleString()}</div>;
+    },
   },
-  // {
-  //   field: "status",
-  //   headerName: "Status",
-  //   width: 160,
-  //   renderCell: (params) => {
-  //     return (
-  //       <div className={`cellWithStatus ${params.row.status}`}>
-  //         {params.row.status}
-  //       </div>
-  //     );
-  //   },
-  // },
+  {
+    field: "telepon",
+    headerName: "Telepon",
+    width: 150,
+  },
 ];

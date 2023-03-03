@@ -17,7 +17,26 @@ export async function createDataIbuHandler(req, res) {
 
 export async function getAllDataIbuHandler(req, res) {
   try {
-    const dataIbu = await getDataIbu();
+    const query = req.query;
+    let dataIbu;
+    if (query.from && query.to) {
+      dataIbu = await getDataIbu({
+        waktu_masuk: {
+          $gt: query.from,
+          $lt: query.to,
+        },
+      });
+    } else dataIbu = await getDataIbu();
+    return res.send(dataIbu);
+  } catch (error) {
+    return res.status(400).send(error.message);
+  }
+}
+
+export async function getOneDataIbuHandler(req, res) {
+  try {
+    const ibuId = req.params.ibuId;
+    const dataIbu = await getDataIbu({ _id: ibuId });
     return res.send(dataIbu);
   } catch (error) {
     return res.status(400).send(error.message);

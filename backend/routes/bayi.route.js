@@ -3,6 +3,7 @@ import {
   createDataBayiHandler,
   deleteDataBayiHandler,
   getAllDataBayiHandler,
+  getOneDataBayiHandler,
   updateDataBayiHandler,
 } from "../controllers/bayi.controller.js";
 
@@ -13,6 +14,7 @@ router.route("/").post(createDataBayiHandler).get(getAllDataBayiHandler);
 router
   .route("/:bayiId")
   .put(updateDataBayiHandler)
-  .delete(deleteDataBayiHandler);
+  .delete(deleteDataBayiHandler)
+  .get(getOneDataBayiHandler);
 
 export default router;
